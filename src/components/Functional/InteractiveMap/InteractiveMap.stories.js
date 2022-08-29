@@ -1,7 +1,7 @@
 import React from "react";
 
 import InteractiveMap from "./InteractiveMap";
-import LocationTypes from "../../utils/enums/locationTypes";
+import LocationTypes from "../../../utils/enums/locationTypes";
 
 export default {
   argTypes: {

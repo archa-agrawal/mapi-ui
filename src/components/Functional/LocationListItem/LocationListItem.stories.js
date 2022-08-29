@@ -1,7 +1,7 @@
 import React from "react";
 
 import LocationListItem from "./LocationListItem";
-import LocationTypes from "../../utils/enums/locationTypes";
+import LocationTypes from "../../../utils/enums/locationTypes";
 
 export default {
   argTypes: {

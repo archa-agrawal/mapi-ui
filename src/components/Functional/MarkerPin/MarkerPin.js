@@ -4,7 +4,7 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import React from "react";
 import "./MarkerPin.scss";
-import LocationTypes from "../../utils/enums/locationTypes";
+import LocationTypes from "../../../utils/enums/locationTypes";
 
 export default function MarkerPin({ type }) {
   const onClick = (e) => {
