@@ -4,6 +4,14 @@ import LocationListItem from "./LocationListItem";
 import LocationTypes from "../../utils/enums/locationTypes";
 
 export default {
+  argTypes: {
+    onSelect: {
+      action: "on item select",
+    },
+    onDelete: {
+      action: "on item delete",
+    },
+  },
   title: "Common/Location List Item",
   component: LocationListItem,
   parameters: {
