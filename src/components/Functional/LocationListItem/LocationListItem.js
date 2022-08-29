@@ -6,7 +6,7 @@ import Avatar from "@mui/material/Avatar";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 import * as React from "react";
-import LocationTypes from "../../utils/enums/locationTypes";
+import LocationTypes from "../../../utils/enums/locationTypes";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
