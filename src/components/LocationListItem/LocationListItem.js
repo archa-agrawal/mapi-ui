@@ -15,6 +15,8 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 export default function LocationListItem({
   location: { id, name, description, type },
   selected,
+  onSelect,
+  onDelete,
 }) {
   const Icon =
     type === LocationTypes.CAFE
@@ -29,12 +31,12 @@ export default function LocationListItem({
     <ListItem
       secondaryAction={
         <IconButton edge="end" aria-label="delete">
-          <DeleteIcon />
+          <DeleteIcon onClick={() => onDelete(id)} />
         </IconButton>
       }
       disablePadding
     >
-      <ListItemButton selected={selected === id}>
+      <ListItemButton selected={selected === id} onClick={() => onSelect(id)}>
         <ListItemAvatar>
           <Avatar>
             <Icon />
