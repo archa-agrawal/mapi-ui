@@ -17,11 +17,11 @@ const style = {
 };
 
 export default function NewMapModal({ open, onSave, onCancel }) {
-  const [title, setTitle] = useState("");
+  const [heading, setHeading] = useState("");
   const [description, setDescription] = useState("");
 
   const resetState = () => {
-    setTitle("");
+    setHeading("");
     setDescription("");
   };
   return (
@@ -42,9 +42,9 @@ export default function NewMapModal({ open, onSave, onCancel }) {
                 fullwidth={"true"}
                 sx={{ my: 1 }}
                 variant={"outlined"}
-                label={"Title"}
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                label={"Heading"}
+                value={heading}
+                onChange={(e) => setHeading(e.target.value)}
               />
               <TextField
                 fullwidth={"true"}
@@ -62,7 +62,7 @@ export default function NewMapModal({ open, onSave, onCancel }) {
               color={"primary"}
               onClick={() => {
                 resetState();
-                onSave({ title, description });
+                onSave({ heading, description });
               }}
             >
               create

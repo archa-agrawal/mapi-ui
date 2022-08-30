@@ -11,16 +11,20 @@ import { MapProvider } from "react-map-gl";
 export default function Map() {
   const dispatch = useDispatch();
   const currentMap = useSelector((state) => state.currentMap);
+
   const onSelectLocation = (location) => {
     dispatch(actions.selectLocation(location));
+  };
+  const onDeleteLocation = (location) => {
+    dispatch(actions.deleteLocation(location));
   };
   const onHeadingUpdate = (heading) => {
     dispatch(actions.updateMapHeading(heading));
   };
-
   const onDescriptionUpdate = (description) => {
     dispatch(actions.updateMapDescription(description));
   };
+
   if (!currentMap) {
     return <div>Fetching...</div>;
   }
@@ -52,6 +56,7 @@ export default function Map() {
               locations={currentMap.locations}
               selected={currentMap.selected}
               onSelect={onSelectLocation}
+              onDelete={onDeleteLocation}
             />
           </Box>
         </Grid>

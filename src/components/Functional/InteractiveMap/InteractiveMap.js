@@ -7,21 +7,7 @@ import MarkerPin from "../MarkerPin/MarkerPin";
 
 const TOKEN = process.env.REACT_APP_MAPBOX_KEY;
 
-let map = null;
-
-export const flyto = (args) => {};
-
-export default function interactiveMap({ id, markers, selected, onMapClick }) {
-  let selectedLocation = {
-    longitude: -79.3871,
-    latitude: 43.6426,
-  };
-  if (selected) {
-    const foundMarker = markers?.find((marker) => marker.id === selected);
-    if (foundMarker) {
-      selectedLocation = foundMarker;
-    }
-  }
+export default function interactiveMap({ id, markers, onMapClick }) {
   const Markers = markers?.map(({ longitude, latitude, type }) => (
     <Marker
       key={`${longitude}-${latitude}`}
@@ -34,11 +20,6 @@ export default function interactiveMap({ id, markers, selected, onMapClick }) {
   return (
     <Map
       id={id}
-      initialViewState={{
-        longitude: selectedLocation.longitude,
-        latitude: selectedLocation.latitude,
-        zoom: 13,
-      }}
       mapStyle="mapbox://styles/mapbox/streets-v11"
       mapboxAccessToken={TOKEN}
       onClick={(e) =>
