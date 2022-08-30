@@ -4,11 +4,14 @@ import Home from "./components/Routes/Home/Home";
 import Map from "./components/Routes/Map/Map";
 import SiteHeader from "./components/Functional/SiteHeader/SiteHeader";
 import Box from "@mui/material/Box";
-import { useMap, MapProvider } from "react-map-gl";
+import { useDispatch } from "react-redux";
+import * as actions from "./actions";
 
 export default function App() {
   const navigate = useNavigate();
-  const createNewMap = () => {
+  const dispatch = useDispatch();
+  const createNewMap = ({ heading, description }) => {
+    dispatch(actions.selectMap({ heading, description }));
     navigate("/map/new");
   };
   return (

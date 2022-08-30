@@ -7,10 +7,6 @@ import MarkerPin from "../MarkerPin/MarkerPin";
 
 const TOKEN = process.env.REACT_APP_MAPBOX_KEY;
 
-let map = null;
-
-export const flyto = (args) => {};
-
 export default function interactiveMap({ id, markers, selected, onMapClick }) {
   let selectedLocation = {
     longitude: -79.3871,

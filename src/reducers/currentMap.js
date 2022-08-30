@@ -12,7 +12,7 @@ const initialState = {
       name: "Ennio's Pizza",
       description: "Fabulous italian place",
       type: LocationTypes.RESTAURANT.name,
-      longitude: -179.4512,
+      longitude: -79.4512,
       latitude: 43.6568,
     },
     {
@@ -37,6 +37,11 @@ const initialState = {
 
 export const currentMap = createReducer(initialState, (builder) => {
   builder
+    .addCase(actions.selectMap, (state, { payload }) => {
+      state.id = 1;
+      state.heading = payload.heading;
+      state.description = payload.description;
+    })
     .addCase(actions.selectLocation, (state, { payload }) => {
       state.selected = payload;
     })
