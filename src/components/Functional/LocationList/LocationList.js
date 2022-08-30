@@ -10,7 +10,7 @@ export default function LocationList({
 }) {
   const Locations = locations.map((location) => (
     <LocationListItem
-      key={`${location.longitude}-${location.latitude}`}
+      key={`${location.longitude}#${location.latitude}`}
       location={location}
       selected={selected}
       onSelect={onSelect}

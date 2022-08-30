@@ -39,7 +39,7 @@ export default function NewMapModal({ open, onSave, onCancel }) {
             </Typography>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               <TextField
-                fullwidth
+                fullwidth={"true"}
                 sx={{ my: 1 }}
                 variant={"outlined"}
                 label={"Title"}
@@ -47,7 +47,7 @@ export default function NewMapModal({ open, onSave, onCancel }) {
                 onChange={(e) => setTitle(e.target.value)}
               />
               <TextField
-                fullwidth
+                fullwidth={"true"}
                 sx={{ my: 1 }}
                 variant={"outlined"}
                 label={"Description"}

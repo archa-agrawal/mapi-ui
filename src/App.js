@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./components/Routes/Home/Home";
 import Map from "./components/Routes/Map/Map";
 import SiteHeader from "./components/Functional/SiteHeader/SiteHeader";
+import Box from "@mui/material/Box";
 
 export default function App() {
   const navigate = useNavigate();
@@ -12,10 +13,12 @@ export default function App() {
   return (
     <div>
       <SiteHeader navigate={navigate} createNewMap={createNewMap} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path={"/map/new"} element={<Map />} />
-      </Routes>
+      <Box sx={{ flexGrow: 1, mx: 10 }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path={"/map/new"} element={<Map />} />
+        </Routes>
+      </Box>
     </div>
   );
 }
