@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect } from "react";
 import List from "@mui/material/List";
 import LocationListItem from "../LocationListItem/LocationListItem";
 import { useMap } from "react-map-gl";
@@ -11,15 +11,22 @@ export default function LocationList({
   onDelete,
 }) {
   const maps = useMap();
+  useEffect(() => {
+    if (maps && maps[mapId]) {
+      const selectedLocation = locations.find(
+        (location) => location.id === selected
+      );
+      if (selectedLocation) {
+        maps[mapId].flyTo({
+          center: [selectedLocation.longitude, selectedLocation.latitude],
+          zoom: 15,
+        });
+      }
+    }
+  }, [maps, mapId, locations, selected]);
+
   const onLocationSelect = (id) => {
     onSelect(id);
-    if (maps && maps[mapId]) {
-      const selectedLocation = locations.find((location) => location.id === id);
-      maps[mapId].flyTo({
-        center: [selectedLocation.longitude, selectedLocation.latitude],
-        zoom: 15,
-      });
-    }
   };
 
   const Locations = locations.map((location) => (

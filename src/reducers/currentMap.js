@@ -50,5 +50,13 @@ export const currentMap = createReducer(initialState, (builder) => {
     })
     .addCase(actions.updateMapDescription, (state, { payload }) => {
       state.description = payload;
+    })
+    .addCase(actions.deleteLocation, (state, { payload }) => {
+      state.locations = state.locations.filter(
+        (location) => location.id !== payload
+      );
+      if (state.selected === payload && state.locations.length > 0) {
+        state.selected = state.locations[0].id;
+      }
     });
 });
