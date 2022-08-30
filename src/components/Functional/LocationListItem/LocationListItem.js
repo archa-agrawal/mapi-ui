@@ -6,11 +6,7 @@ import Avatar from "@mui/material/Avatar";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 import * as React from "react";
-import LocationTypes from "../../../utils/enums/locationTypes";
-import LocalCafeRoundedIcon from "@mui/icons-material/LocalCafeRounded";
-import BrunchDiningRoundedIcon from "@mui/icons-material/BrunchDiningRounded";
-import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import { getLocationType } from "../../../utils/enums/locationTypes";
 
 export default function LocationListItem({
   location: { id, name, description, type },
@@ -18,14 +14,7 @@ export default function LocationListItem({
   onSelect,
   onDelete,
 }) {
-  const Icon =
-    type === LocationTypes.CAFE
-      ? LocalCafeRoundedIcon
-      : type === LocationTypes.RESTAURANT
-      ? BrunchDiningRoundedIcon
-      : type === LocationTypes.LIBRARY
-      ? MenuBookRoundedIcon
-      : LocationOnRoundedIcon;
+  const { Icon } = getLocationType(type);
 
   return (
     <ListItem

@@ -1,10 +1,6 @@
-import LocalCafeRoundedIcon from "@mui/icons-material/LocalCafeRounded";
-import BrunchDiningRoundedIcon from "@mui/icons-material/BrunchDiningRounded";
-import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
-import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import React from "react";
 import "./MarkerPin.scss";
-import LocationTypes from "../../../utils/enums/locationTypes";
+import { getLocationType } from "../../../utils/enums/locationTypes";
 import { useTheme } from "@mui/material/styles";
 
 export default function MarkerPin({ type }) {
@@ -13,14 +9,8 @@ export default function MarkerPin({ type }) {
     e.stopPropagation();
   };
 
-  const Icon =
-    type === LocationTypes.CAFE
-      ? LocalCafeRoundedIcon
-      : type === LocationTypes.RESTAURANT
-      ? BrunchDiningRoundedIcon
-      : type === LocationTypes.LIBRARY
-      ? MenuBookRoundedIcon
-      : LocationOnRoundedIcon;
+  const { Icon } = getLocationType(type);
+
   return (
     <div
       className={"marker-pin-container"}
