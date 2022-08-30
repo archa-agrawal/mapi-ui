@@ -22,20 +22,19 @@ const Template = (args) => (
 
 export const InteractiveMapSample = Template.bind({});
 InteractiveMapSample.args = {
+  id: 1,
   markers: [
     {
+      id: 1,
       longitude: -79.4512,
       latitude: 43.6568,
-      type: LocationTypes.CAFE,
+      type: LocationTypes.CAFE.name,
     },
     {
+      id: 2,
       longitude: -79.4632,
       latitude: 43.6568,
-      type: LocationTypes.RESTAURANT,
+      type: LocationTypes.RESTAURANT.name,
     },
   ],
-  selected: {
-    longitude: -79.4512,
-    latitude: 43.6568,
-  },
 };

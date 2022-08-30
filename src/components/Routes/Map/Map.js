@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Header from "../../Functional/Header/Header";
-import InteractiveMap from "../../Functional/InteractiveMap/InteractiveMap";
-import LocationList from "../../Functional/LocationList/LocationList";
+import Header from "~components/Functional/Header/Header";
+import InteractiveMap from "~components/Functional/InteractiveMap/InteractiveMap";
+import LocationList from "~components/Functional/LocationList/LocationList";
+import NewLocationModal from "~components/Functional/NewLocationModal/NewLocationModal";
 import { useSelector, useDispatch } from "react-redux";
-import * as actions from "../../../actions";
+import * as actions from "~actions";
 import { MapProvider } from "react-map-gl";
 
 export default function Map() {
+  const [modalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
   const currentMap = useSelector((state) => state.currentMap);
 
@@ -46,6 +48,7 @@ export default function Map() {
               id={currentMap.id}
               markers={currentMap.locations}
               selected={currentMap.selected}
+              onMapClick={() => setModalOpen(true)}
             />
           </Box>
         </Grid>
@@ -61,6 +64,7 @@ export default function Map() {
           </Box>
         </Grid>
       </Grid>
+      <NewLocationModal open={modalOpen} onCancel={() => setModalOpen(false)} />
     </MapProvider>
   );
 }

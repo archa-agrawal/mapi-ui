@@ -6,18 +6,22 @@ import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 const locationTypes = {
   CAFE: {
     name: "cafe",
+    text: "Cafe",
     Icon: LocalCafeRoundedIcon,
   },
   RESTAURANT: {
     name: "restaurant",
+    text: "Restaurant",
     Icon: BrunchDiningRoundedIcon,
   },
   LIBRARY: {
     name: "library",
+    text: "Library",
     Icon: MenuBookRoundedIcon,
   },
   DEFAULT: {
     name: "default",
+    text: "Default",
     Icon: LocationOnRoundedIcon,
   },
 };

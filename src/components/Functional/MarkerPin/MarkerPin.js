@@ -1,6 +1,6 @@
 import React from "react";
 import "./MarkerPin.scss";
-import { getLocationType } from "../../../utils/enums/locationTypes";
+import { getLocationType } from "~utils/enums/locationTypes";
 import { useTheme } from "@mui/material/styles";
 
 export default function MarkerPin({ type }) {

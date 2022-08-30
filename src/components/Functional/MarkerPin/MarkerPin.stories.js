@@ -1,7 +1,7 @@
 import React from "react";
 
 import MarkerPin from "./MarkerPin";
-import LocationTypes from "../../../utils/enums/locationTypes";
+import LocationTypes from "~utils/enums/locationTypes";
 
 export default {
   title: "Common/Marker Pin",
