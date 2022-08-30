@@ -1,13 +1,17 @@
 import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import React from "react";
-import InteractiveMap, { Marker } from "react-map-gl";
+import { Marker, Map } from "react-map-gl";
 import GeocoderControl from "../GeoCoderControl/GeoCodeControl";
 import MarkerPin from "../MarkerPin/MarkerPin";
 
 const TOKEN = process.env.REACT_APP_MAPBOX_KEY;
 
-export default function interactiveMap({ markers, selected, onMapClick }) {
+let map = null;
+
+export const flyto = (args) => {};
+
+export default function interactiveMap({ id, markers, selected, onMapClick }) {
   let selectedLocation = {
     longitude: -79.3871,
     latitude: 43.6426,
@@ -28,7 +32,8 @@ export default function interactiveMap({ markers, selected, onMapClick }) {
     </Marker>
   ));
   return (
-    <InteractiveMap
+    <Map
+      id={id}
       initialViewState={{
         longitude: selectedLocation.longitude,
         latitude: selectedLocation.latitude,
@@ -42,6 +47,6 @@ export default function interactiveMap({ markers, selected, onMapClick }) {
     >
       {Markers}
       <GeocoderControl mapboxAccessToken={TOKEN} position="top-left" />
-    </InteractiveMap>
+    </Map>
   );
 }

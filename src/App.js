@@ -4,6 +4,7 @@ import Home from "./components/Routes/Home/Home";
 import Map from "./components/Routes/Map/Map";
 import SiteHeader from "./components/Functional/SiteHeader/SiteHeader";
 import Box from "@mui/material/Box";
+import { useMap, MapProvider } from "react-map-gl";
 
 export default function App() {
   const navigate = useNavigate();
