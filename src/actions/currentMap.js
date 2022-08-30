@@ -27,3 +27,10 @@ export const deleteLocation = createAction(
     payload: id,
   })
 );
+
+export const addLocation = createAction(
+  "currentMap/addLocation",
+  (location) => ({
+    payload: location,
+  })
+);
