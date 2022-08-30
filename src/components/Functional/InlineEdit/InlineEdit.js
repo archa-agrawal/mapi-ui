@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
 
 export default function InlineEdit({
   value,
@@ -44,8 +45,8 @@ export default function InlineEdit({
     );
   }
   return (
-    <div className={className} onClick={onLabelClick}>
+    <Typography className={className} onClick={onLabelClick}>
       {labelValue}
-    </div>
+    </Typography>
   );
 }

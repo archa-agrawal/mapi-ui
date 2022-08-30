@@ -4,8 +4,11 @@ import Header from "./Header";
 
 export default {
   argTypes: {
-    onUpdate: {
-      action: "text updated",
+    onHeaderUpdate: {
+      action: "header updated",
+    },
+    onDescriptionUpdate: {
+      action: "description updated",
     },
   },
   title: "Common/Header",

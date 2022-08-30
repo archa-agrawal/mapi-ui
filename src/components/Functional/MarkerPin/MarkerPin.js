@@ -1,27 +1,33 @@
-import LocalCafeIcon from "@mui/icons-material/LocalCafe";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import LocalCafeRoundedIcon from "@mui/icons-material/LocalCafeRounded";
+import BrunchDiningRoundedIcon from "@mui/icons-material/BrunchDiningRounded";
+import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import React from "react";
 import "./MarkerPin.scss";
 import LocationTypes from "../../../utils/enums/locationTypes";
+import { useTheme } from "@mui/material/styles";
 
 export default function MarkerPin({ type }) {
+  const theme = useTheme();
   const onClick = (e) => {
     e.stopPropagation();
   };
 
   const Icon =
     type === LocationTypes.CAFE
-      ? LocalCafeIcon
+      ? LocalCafeRoundedIcon
       : type === LocationTypes.RESTAURANT
-      ? RestaurantIcon
+      ? BrunchDiningRoundedIcon
       : type === LocationTypes.LIBRARY
-      ? MenuBookIcon
-      : LocationOnIcon;
+      ? MenuBookRoundedIcon
+      : LocationOnRoundedIcon;
   return (
-    <div className={"marker-pin-container"} onClick={onClick}>
-      <Icon sx={{ color: "deepPink" }} />
+    <div
+      className={"marker-pin-container"}
+      onClick={onClick}
+      style={{ borderColor: theme.palette.secondary.light }}
+    >
+      <Icon sx={{ color: "secondary.light" }} />
     </div>
   );
 }
