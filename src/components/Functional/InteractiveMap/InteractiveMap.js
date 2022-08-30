@@ -18,18 +18,15 @@ export default function interactiveMap({ markers, selected, onMapClick }) {
       selectedLocation = foundMarker;
     }
   }
-  const Markers = markers?.map(({ longitude, latitude, type }) => {
-    console.log(longitude, latitude, type);
-    return (
-      <Marker
-        key={`${longitude}-${latitude}`}
-        longitude={longitude}
-        latitude={latitude}
-      >
-        <MarkerPin type={type} />
-      </Marker>
-    );
-  });
+  const Markers = markers?.map(({ longitude, latitude, type }) => (
+    <Marker
+      key={`${longitude}-${latitude}`}
+      longitude={longitude}
+      latitude={latitude}
+    >
+      <MarkerPin type={type} />
+    </Marker>
+  ));
   return (
     <InteractiveMap
       initialViewState={{
