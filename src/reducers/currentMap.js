@@ -1,6 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
-import LocationTypes from "../utils/enums/locationTypes";
-import * as actions from "../actions";
+import LocationTypes from "~utils/enums/locationTypes";
+import * as actions from "~actions";
 
 const initialState = {
   id: 1,

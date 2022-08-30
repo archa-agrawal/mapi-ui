@@ -27,7 +27,7 @@ LocationListItemRestaurant.args = {
     id: 1,
     name: "Ennio's Pizza",
     description: "Fabulous italian place",
-    type: LocationTypes.RESTAURANT,
+    type: LocationTypes.RESTAURANT.name,
   },
 };
 

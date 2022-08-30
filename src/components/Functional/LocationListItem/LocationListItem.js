@@ -19,8 +19,8 @@ export default function LocationListItem({
   return (
     <ListItem
       secondaryAction={
-        <IconButton edge="end" aria-label="delete">
-          <DeleteIcon onClick={() => onDelete(id)} />
+        <IconButton edge="end" aria-label="delete" onClick={() => onDelete(id)}>
+          <DeleteIcon />
         </IconButton>
       }
       disablePadding

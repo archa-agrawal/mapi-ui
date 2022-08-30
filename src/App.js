@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import Home from "./components/Routes/Home/Home";
-import Map from "./components/Routes/Map/Map";
-import SiteHeader from "./components/Functional/SiteHeader/SiteHeader";
+import Home from "~components/Routes/Home/Home";
+import Map from "~components/Routes/Map/Map";
+import SiteHeader from "~components/Functional/SiteHeader/SiteHeader";
 import Box from "@mui/material/Box";
 import { useDispatch } from "react-redux";
-import * as actions from "./actions";
+import * as actions from "~actions";
 
 export default function App() {
   const navigate = useNavigate();
