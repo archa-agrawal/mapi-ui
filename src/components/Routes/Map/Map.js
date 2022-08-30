@@ -8,9 +8,18 @@ import NewLocationModal from "~components/Functional/NewLocationModal/NewLocatio
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "~actions";
 import { MapProvider } from "react-map-gl";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Map() {
-  const [modalOpen, setModalOpen] = useState(false);
+  const initalState = {
+    longitude: null,
+    latitude: null,
+    modalOpen: false,
+  };
+  const resetState = () => {
+    setState(initalState);
+  };
+  const [state, setState] = useState(initalState);
   const dispatch = useDispatch();
   const currentMap = useSelector((state) => state.currentMap);
 
@@ -26,11 +35,29 @@ export default function Map() {
   const onDescriptionUpdate = (description) => {
     dispatch(actions.updateMapDescription(description));
   };
-
+  const onMapClick = ({ longitude, latitude }) => {
+    setState({
+      longitude,
+      latitude,
+      modalOpen: true,
+    });
+  };
+  const onAddNewLocation = ({ title, description, type }) => {
+    dispatch(
+      actions.addLocation({
+        id: uuidv4(),
+        title,
+        description,
+        type,
+        longitude: state.longitude,
+        latitude: state.latitude,
+      })
+    );
+    resetState();
+  };
   if (!currentMap) {
     return <div>Fetching...</div>;
   }
-
   return (
     <MapProvider>
       <Grid container>
@@ -48,7 +75,7 @@ export default function Map() {
               id={currentMap.id}
               markers={currentMap.locations}
               selected={currentMap.selected}
-              onMapClick={() => setModalOpen(true)}
+              onMapClick={onMapClick}
             />
           </Box>
         </Grid>
@@ -64,7 +91,11 @@ export default function Map() {
           </Box>
         </Grid>
       </Grid>
-      <NewLocationModal open={modalOpen} onCancel={() => setModalOpen(false)} />
+      <NewLocationModal
+        open={state.modalOpen}
+        onCancel={resetState}
+        onSave={onAddNewLocation}
+      />
     </MapProvider>
   );
 }

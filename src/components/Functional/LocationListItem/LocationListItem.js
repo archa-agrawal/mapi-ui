@@ -6,10 +6,10 @@ import Avatar from "@mui/material/Avatar";
 import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 import * as React from "react";
-import { getLocationType } from "../../../utils/enums/locationTypes";
+import { getLocationType } from "~utils/enums/locationTypes";
 
 export default function LocationListItem({
-  location: { id, name, description, type },
+  location: { id, title, description, type },
   selected,
   onSelect,
   onDelete,
@@ -31,7 +31,7 @@ export default function LocationListItem({
             <Icon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary={name} secondary={description} />
+        <ListItemText primary={title} secondary={description} />
       </ListItemButton>
     </ListItem>
   );

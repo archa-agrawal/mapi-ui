@@ -12,7 +12,7 @@ export default function LocationList({
 }) {
   const maps = useMap();
   useEffect(() => {
-    if (maps && maps[mapId]) {
+    if (maps && maps[mapId] && locations) {
       const selectedLocation = locations.find(
         (location) => location.id === selected
       );
@@ -29,7 +29,7 @@ export default function LocationList({
     onSelect(id);
   };
 
-  const Locations = locations.map((location) => (
+  const Locations = locations?.map((location) => (
     <LocationListItem
       key={`${location.longitude}#${location.latitude}`}
       location={location}
