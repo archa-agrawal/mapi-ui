@@ -7,10 +7,10 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItem from "@mui/material/ListItem";
 import * as React from "react";
 import LocationTypes from "../../../utils/enums/locationTypes";
-import LocalCafeIcon from "@mui/icons-material/LocalCafe";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
-import MenuBookIcon from "@mui/icons-material/MenuBook";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import LocalCafeRoundedIcon from "@mui/icons-material/LocalCafeRounded";
+import BrunchDiningRoundedIcon from "@mui/icons-material/BrunchDiningRounded";
+import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 
 export default function LocationListItem({
   location: { id, name, description, type },
@@ -20,12 +20,12 @@ export default function LocationListItem({
 }) {
   const Icon =
     type === LocationTypes.CAFE
-      ? LocalCafeIcon
+      ? LocalCafeRoundedIcon
       : type === LocationTypes.RESTAURANT
-      ? RestaurantIcon
+      ? BrunchDiningRoundedIcon
       : type === LocationTypes.LIBRARY
-      ? MenuBookIcon
-      : LocationOnIcon;
+      ? MenuBookRoundedIcon
+      : LocationOnRoundedIcon;
 
   return (
     <ListItem
