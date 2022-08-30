@@ -7,37 +7,44 @@ import MarkerPin from "../MarkerPin/MarkerPin";
 
 const TOKEN = process.env.REACT_APP_MAPBOX_KEY;
 
-export default function interactiveMap({
-  markers,
-  selected: { latitude, longitude },
-  onMapClick,
-}) {
-  const Markers = markers.map(({ longitude, latitude, type }) => (
-    <Marker
-      key={`${longitude}-${latitude}`}
-      longitude={longitude}
-      latitude={latitude}
-    >
-      <MarkerPin type={type} />
-    </Marker>
-  ));
-  return (
-    <div style={{ height: "500px" }}>
-      <InteractiveMap
-        initialViewState={{
-          longitude,
-          latitude,
-          zoom: 13,
-        }}
-        mapStyle="mapbox://styles/mapbox/streets-v11"
-        mapboxAccessToken={TOKEN}
-        onClick={(e) =>
-          onMapClick({ longitude: e.lngLat.lng, latitude: e.lngLat.lat })
-        }
+export default function interactiveMap({ markers, selected, onMapClick }) {
+  let selectedLocation = {
+    longitude: -79.3871,
+    latitude: 43.6426,
+  };
+  if (selected) {
+    const foundMarker = markers?.find((marker) => marker.id === selected);
+    if (foundMarker) {
+      selectedLocation = foundMarker;
+    }
+  }
+  const Markers = markers?.map(({ longitude, latitude, type }) => {
+    console.log(longitude, latitude, type);
+    return (
+      <Marker
+        key={`${longitude}-${latitude}`}
+        longitude={longitude}
+        latitude={latitude}
       >
-        {Markers}
-        <GeocoderControl mapboxAccessToken={TOKEN} position="top-left" />
-      </InteractiveMap>
-    </div>
+        <MarkerPin type={type} />
+      </Marker>
+    );
+  });
+  return (
+    <InteractiveMap
+      initialViewState={{
+        longitude: selectedLocation.longitude,
+        latitude: selectedLocation.latitude,
+        zoom: 13,
+      }}
+      mapStyle="mapbox://styles/mapbox/streets-v11"
+      mapboxAccessToken={TOKEN}
+      onClick={(e) =>
+        onMapClick({ longitude: e.lngLat.lng, latitude: e.lngLat.lat })
+      }
+    >
+      {Markers}
+      <GeocoderControl mapboxAccessToken={TOKEN} position="top-left" />
+    </InteractiveMap>
   );
 }

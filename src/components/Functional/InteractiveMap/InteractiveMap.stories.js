@@ -14,7 +14,11 @@ export default {
   },
 };
 
-const Template = (args) => <InteractiveMap {...args} />;
+const Template = (args) => (
+  <div style={{ height: "500px" }}>
+    <InteractiveMap {...args} />
+  </div>
+);
 
 export const InteractiveMapSample = Template.bind({});
 InteractiveMapSample.args = {
