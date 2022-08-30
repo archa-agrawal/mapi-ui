@@ -1,12 +1,17 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Home from "./components/Routes/Home/Home";
 import Map from "./components/Routes/Map/Map";
+import SiteHeader from "./components/Functional/SiteHeader/SiteHeader";
 
-export default function app() {
+export default function App() {
+  const navigate = useNavigate();
+  const createNewMap = () => {
+    navigate("/map/new");
+  };
   return (
     <div>
-      <h1>Welcome to React Router!</h1>
+      <SiteHeader navigate={navigate} createNewMap={createNewMap} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path={"/map/new"} element={<Map />} />
