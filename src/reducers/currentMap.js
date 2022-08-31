@@ -2,7 +2,7 @@ import { createReducer } from "@reduxjs/toolkit";
 import * as actions from "~actions";
 
 const initialState = {
-  id: 1,
+  id: null,
   heading: "",
   description: "",
   theme: "",
@@ -13,6 +13,7 @@ const initialState = {
 export const currentMap = createReducer(initialState, (builder) => {
   builder
     .addCase(actions.selectMap, (state, { payload }) => {
+      state.id = payload.id;
       state.heading = payload.heading;
       state.description = payload.description;
       state.theme = payload.theme;
