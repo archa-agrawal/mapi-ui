@@ -7,23 +7,20 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
+import { getTheme } from "~utils/enums/themes";
 
-export default function MapCard({
-  user,
-  heading,
-  description,
-  date,
-  theme,
-  color,
-}) {
+export default function MapCard({ user, heading, description, date, theme }) {
+  const currentTheme = getTheme(theme);
   return (
-    <Card sx={{ maxWidth: 345, backgroundColor: color }}>
+    <Card sx={{ maxWidth: 345, backgroundColor: currentTheme.color }}>
       <CardHeader
         avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="user">
+          <Avatar
+            sx={{ backgroundColor: currentTheme.secondaryColor }}
+            aria-label="user"
+          >
             {user.name.substring(0, 1)}
           </Avatar>
         }
@@ -33,8 +30,8 @@ export default function MapCard({
       <CardMedia
         component="img"
         height="194"
-        image={`${process.env.PUBLIC_URL}/images/${theme}.jpg`}
-        alt="Paella dish"
+        image={currentTheme.img}
+        alt={currentTheme.name}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
