@@ -19,7 +19,7 @@ export default function SiteHeader({ navigate, createNewMap }) {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "secondary.light" }}>
+    <AppBar position="fixed" sx={{ bgcolor: "secondary.light" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <TravelExploreRoundedIcon

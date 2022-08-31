@@ -3,6 +3,9 @@ import * as actions from "~actions";
 
 const initialState = {
   id: 1,
+  heading: "",
+  description: "",
+  theme: "",
   locations: [],
   selected: undefined,
 };
@@ -12,6 +15,7 @@ export const currentMap = createReducer(initialState, (builder) => {
     .addCase(actions.selectMap, (state, { payload }) => {
       state.heading = payload.heading;
       state.description = payload.description;
+      state.theme = payload.theme;
     })
     .addCase(actions.selectLocation, (state, { payload }) => {
       state.selected = payload;

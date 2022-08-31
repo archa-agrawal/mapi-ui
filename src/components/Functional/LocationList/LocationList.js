@@ -7,6 +7,7 @@ export default function LocationList({
   mapId,
   locations,
   selected,
+  backgroundColor,
   onSelect,
   onDelete,
 }) {
@@ -39,7 +40,14 @@ export default function LocationList({
     />
   ));
   return (
-    <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+    <List
+      sx={{
+        width: "100%",
+        maxWidth: 360,
+        backgroundColor: { backgroundColor },
+        height: "100%",
+      }}
+    >
       {Locations}
     </List>
   );

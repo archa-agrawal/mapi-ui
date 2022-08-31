@@ -10,14 +10,14 @@ import * as actions from "~actions";
 export default function App() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const createNewMap = ({ heading, description }) => {
-    dispatch(actions.selectMap({ heading, description }));
+  const createNewMap = (map) => {
+    dispatch(actions.selectMap(map));
     navigate("/map/new");
   };
   return (
     <div>
       <SiteHeader navigate={navigate} createNewMap={createNewMap} />
-      <Box sx={{ flexGrow: 1, mx: 10 }}>
+      <Box sx={{ mx: 10, mt: 8 }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path={"/map/new"} element={<Map />} />
