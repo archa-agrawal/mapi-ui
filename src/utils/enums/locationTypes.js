@@ -2,6 +2,12 @@ import LocalCafeRoundedIcon from "@mui/icons-material/LocalCafeRounded";
 import BrunchDiningRoundedIcon from "@mui/icons-material/BrunchDiningRounded";
 import MenuBookRoundedIcon from "@mui/icons-material/MenuBookRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import SportsTennisRoundedIcon from "@mui/icons-material/SportsTennisRounded";
+import MovieFilterRoundedIcon from "@mui/icons-material/MovieFilterRounded";
+import LocalMallRoundedIcon from "@mui/icons-material/LocalMallRounded";
+import AttractionsRoundedIcon from "@mui/icons-material/AttractionsRounded";
+import TheaterComedyRoundedIcon from "@mui/icons-material/TheaterComedyRounded";
+import StadiumRoundedIcon from "@mui/icons-material/StadiumRounded";
 
 const locationTypes = {
   CAFE: {
@@ -18,6 +24,36 @@ const locationTypes = {
     name: "library",
     text: "Library",
     Icon: MenuBookRoundedIcon,
+  },
+  SPORTS: {
+    name: "sports",
+    text: "Sports",
+    Icon: SportsTennisRoundedIcon,
+  },
+  MOVIES: {
+    name: "movies",
+    text: "Movies",
+    Icon: MovieFilterRoundedIcon,
+  },
+  SHOPPING: {
+    name: "shopping",
+    text: "Shopping",
+    Icon: LocalMallRoundedIcon,
+  },
+  ENTERTAINMENT: {
+    name: "entertainment",
+    text: "Entertainment",
+    Icon: AttractionsRoundedIcon,
+  },
+  THEATER: {
+    name: "theater",
+    text: "Theater",
+    Icon: TheaterComedyRoundedIcon,
+  },
+  STADIUM: {
+    name: "stadium",
+    text: "Stadium",
+    Icon: StadiumRoundedIcon,
   },
   DEFAULT: {
     name: "default",

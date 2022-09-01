@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import * as actions from "~actions";
 import { MapProvider } from "react-map-gl";
 import { v4 as uuidv4 } from "uuid";
+import { getTheme } from "~utils/enums/themes";
 
 export default function Map() {
   const initalState = {
@@ -22,6 +23,7 @@ export default function Map() {
   const [state, setState] = useState(initalState);
   const dispatch = useDispatch();
   const currentMap = useSelector((state) => state.currentMap);
+  const currentTheme = getTheme(currentMap.theme);
 
   const onSelectLocation = (location) => {
     dispatch(actions.selectLocation(location));
@@ -60,6 +62,19 @@ export default function Map() {
   }
   return (
     <MapProvider>
+      <Box
+        sx={{
+          backgroundSize: "cover",
+          width: "100vw",
+          height: "100vh",
+          position: "absolute",
+          zIndex: "-1",
+          opacity: "0.3",
+          top: "0",
+          left: "0",
+          backgroundImage: `url(${currentTheme.img})`,
+        }}
+      ></Box>
       <Grid container>
         <Grid item xs={12}>
           <Header
@@ -80,11 +95,12 @@ export default function Map() {
           </Box>
         </Grid>
         <Grid item xs={4}>
-          <Box>
+          <Box sx={{ height: "484px" }}>
             <LocationList
               mapId={currentMap.id}
               locations={currentMap.locations}
               selected={currentMap.selected}
+              backgroundColor={currentTheme.color}
               onSelect={onSelectLocation}
               onDelete={onDeleteLocation}
             />

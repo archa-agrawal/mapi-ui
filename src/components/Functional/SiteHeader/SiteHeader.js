@@ -19,7 +19,10 @@ export default function SiteHeader({ navigate, createNewMap }) {
   };
 
   return (
-    <AppBar position="static" sx={{ bgcolor: "secondary.light" }}>
+    <AppBar
+      position="fixed"
+      sx={{ backgroundColor: "#f5f3e9", color: "#ed0965" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <TravelExploreRoundedIcon
@@ -42,7 +45,7 @@ export default function SiteHeader({ navigate, createNewMap }) {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Button
-              sx={{ my: 2, display: "block", color: "white" }}
+              sx={{ my: 2, display: "block", color: "#ed0965" }}
               onClick={() => navigate("/")}
             >
               Explore
