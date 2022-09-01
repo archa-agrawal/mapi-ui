@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import MapCard from "~components/Functional/MapCard/MapCard";
@@ -7,12 +7,14 @@ import { useDispatch, useSelector } from "react-redux";
 import * as actions from "~actions";
 import Snackbar from "@mui/material/Snackbar";
 export default function Home() {
-  const [snackBarOpen, setSnackBarOpen] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.getMaps());
+  }, [dispatch]);
+  const [snackBarOpen, setSnackBarOpen] = useState(false);
   const maps = useSelector((state) => state.maps.maps);
   const onTileClick = (map) => {
-    dispatch(actions.selectMap(map));
     navigate(`/map/${map.id}`);
   };
   const onTileDelete = (mapId) => {

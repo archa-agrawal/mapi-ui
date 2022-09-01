@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Header from "~components/Functional/Header/Header";
@@ -10,19 +10,24 @@ import * as actions from "~actions";
 import { MapProvider } from "react-map-gl";
 import { v4 as uuidv4 } from "uuid";
 import { getTheme } from "~utils/enums/themes";
+import { useParams } from "react-router-dom";
 
 export default function Map() {
-  const initalState = {
+  const initialState = {
     longitude: null,
     latitude: null,
     modalOpen: false,
   };
   const resetState = () => {
-    setState(initalState);
+    setState(initialState);
   };
-  const [state, setState] = useState(initalState);
+  const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
-  const currentMap = useSelector((state) => state.currentMap);
+  const { id } = useParams();
+  useEffect(() => {
+    dispatch(actions.getMap(id));
+  }, [dispatch, id]);
+  const currentMap = useSelector((state) => state.currentMap.map);
   const currentTheme = getTheme(currentMap.theme);
 
   const onSelectLocation = (location) => {
@@ -87,9 +92,8 @@ export default function Map() {
         <Grid item xs={8}>
           <Box sx={{ height: "500px" }}>
             <InteractiveMap
-              id={currentMap.id}
+              id={id}
               markers={currentMap.locations}
-              selected={currentMap.selected}
               onMapClick={onMapClick}
             />
           </Box>
@@ -97,7 +101,7 @@ export default function Map() {
         <Grid item xs={4}>
           <Box sx={{ height: "484px" }}>
             <LocationList
-              mapId={currentMap.id}
+              mapId={id}
               locations={currentMap.locations}
               selected={currentMap.selected}
               backgroundColor={currentTheme.color}

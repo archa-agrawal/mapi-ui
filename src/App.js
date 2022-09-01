@@ -23,7 +23,6 @@ export default function App() {
         id: mapId,
       })
     );
-    dispatch(actions.selectMap({ ...map, id: mapId }));
     navigate("/map/new");
   };
   return (

@@ -17,6 +17,7 @@ export default function LocationList({
       const selectedLocation = locations.find(
         (location) => location.id === selected
       );
+      console.log(selectedLocation);
       if (selectedLocation) {
         maps[mapId].flyTo({
           center: [selectedLocation.longitude, selectedLocation.latitude],

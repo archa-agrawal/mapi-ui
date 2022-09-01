@@ -2,21 +2,27 @@ import { createReducer } from "@reduxjs/toolkit";
 import * as actions from "~actions";
 
 const initialState = {
-  id: null,
-  heading: "",
-  description: "",
-  theme: "",
-  locations: [],
-  selected: undefined,
+  map: {
+    id: null,
+    heading: "",
+    description: "",
+    theme: "",
+    locations: [],
+    selected: undefined,
+  },
 };
 
 export const currentMap = createReducer(initialState, (builder) => {
   builder
-    .addCase(actions.selectMap, (state, { payload }) => {
-      state.id = payload.id;
-      state.heading = payload.heading;
-      state.description = payload.description;
-      state.theme = payload.theme;
+    .addCase(actions.getMap.pending, (state) => {
+      state.map = {};
+    })
+    .addCase(actions.getMap.fulfilled, (state, { payload }) => {
+      state.map = {
+        ...payload,
+      };
+      state.map.selected =
+        state.map.locations.length > 0 ? state.map.locations[0].id : undefined;
     })
     .addCase(actions.selectLocation, (state, { payload }) => {
       state.selected = payload;
