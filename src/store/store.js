@@ -6,5 +6,6 @@ export const store = configureStore({
   reducer: {
     currentMap: reducers.currentMap,
     maps: reducers.mapList,
+    user: reducers.user,
   },
 });
