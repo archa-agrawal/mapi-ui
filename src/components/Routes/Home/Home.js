@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import * as actions from "~actions";
 import Snackbar from "@mui/material/Snackbar";
-export default function Home() {
+export default function Home({ userId }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(actions.getMaps());
-  }, [dispatch]);
+  }, [dispatch, userId]);
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const maps = useSelector((state) => state.maps.maps);
   const onTileClick = (map) => {

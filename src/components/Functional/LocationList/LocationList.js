@@ -10,6 +10,7 @@ export default function LocationList({
   backgroundColor,
   onSelect,
   onDelete,
+  deletable,
 }) {
   const maps = useMap();
   useEffect(() => {
@@ -37,6 +38,7 @@ export default function LocationList({
       selected={selected}
       onSelect={onLocationSelect}
       onDelete={onDelete}
+      deletable={deletable}
     />
   ));
   return (
@@ -46,6 +48,7 @@ export default function LocationList({
         maxWidth: 360,
         backgroundColor: { backgroundColor },
         height: "100%",
+        opacity: 0.8,
       }}
     >
       {Locations}

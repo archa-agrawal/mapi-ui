@@ -1,3 +1,3 @@
-export * from "./currentMap";
+export * from "./location";
 export * from "./mapList";
 export * from "./user";

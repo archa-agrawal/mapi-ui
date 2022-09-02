@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
@@ -10,12 +10,16 @@ export default function InlineEdit({
   placeholder,
   onUpdate,
   className,
+  editable,
 }) {
   const labelValue = value || placeholder;
-  const [editedValue, setEditedValue] = useState(value);
+  const [editedValue, setEditedValue] = useState("");
+  useEffect(() => {
+    setEditedValue(value);
+  }, [value]);
   const [editMode, setEditMode] = useState(false);
 
-  const onLabelClick = () => setEditMode(true);
+  const onLabelClick = () => setEditMode(!!editable);
   const onTextChange = (e) => setEditedValue(e.target.value);
   const onCheck = () => {
     onUpdate(editedValue);

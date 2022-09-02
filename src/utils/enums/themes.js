@@ -34,6 +34,46 @@ const themes = [
     color: "#cff5c4",
     secondaryColor: "#ed0965",
   },
+  {
+    name: "sports3",
+    color: "#7be0a5",
+    secondaryColor: "#ed0965",
+  },
+  {
+    name: "sports4",
+    color: "#7ba9e0",
+    secondaryColor: "#ed0965",
+  },
+  {
+    name: "animals1",
+    color: "#edeadd",
+    secondaryColor: "#ed0965",
+  },
+  {
+    name: "food7",
+    color: "#faf3f0",
+    secondaryColor: "#ed0965",
+  },
+  {
+    name: "food5",
+    color: "#ded0b4",
+    secondaryColor: "#ed0965",
+  },
+  {
+    name: "food6",
+    color: "#f7f7eb",
+    secondaryColor: "#ed0965",
+  },
+  {
+    name: "fun4",
+    color: "#f4f5ba",
+    secondaryColor: "#ed0965",
+  },
+  {
+    name: "fun5",
+    color: "#5cc7ed",
+    secondaryColor: "#ed0965",
+  },
 ];
 
 export const getTheme = (name) => {

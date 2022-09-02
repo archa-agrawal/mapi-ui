@@ -18,6 +18,11 @@ export default function MapCard({ map, onCardClick, onShareClick, onDelete }) {
     navigator.clipboard.writeText(`${process.env.REACT_APP_URL}/map/${map.id}`);
     onShareClick();
   };
+  const DeleteButton = map.owned ? (
+    <IconButton aria-label="delete" onClick={() => onDelete(map.id)}>
+      <DeleteIcon />
+    </IconButton>
+  ) : null;
   return (
     <Card sx={{ maxWidth: 345, backgroundColor: currentTheme.color }}>
       <CardActionArea onClick={() => onCardClick(map)}>
@@ -49,9 +54,7 @@ export default function MapCard({ map, onCardClick, onShareClick, onDelete }) {
         <IconButton aria-label="share" onClick={onShare}>
           <ShareIcon />
         </IconButton>
-        <IconButton aria-label="delete" onClick={() => onDelete(map.id)}>
-          <DeleteIcon />
-        </IconButton>
+        {DeleteButton}
       </CardActions>
     </Card>
   );
