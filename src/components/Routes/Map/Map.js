@@ -8,11 +8,10 @@ import NewLocationModal from "~components/Functional/NewLocationModal/NewLocatio
 import { useSelector, useDispatch } from "react-redux";
 import * as actions from "~actions";
 import { MapProvider } from "react-map-gl";
-import { v4 as uuidv4 } from "uuid";
 import { getTheme } from "~utils/enums/themes";
 import { useParams } from "react-router-dom";
 
-export default function Map() {
+export default function Map({ userId }) {
   const initialState = {
     longitude: null,
     latitude: null,
@@ -26,7 +25,7 @@ export default function Map() {
   const { id } = useParams();
   useEffect(() => {
     dispatch(actions.getMap(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, userId]);
   const currentMap = useSelector((state) => state.currentMap.map);
   const currentTheme = getTheme(currentMap.theme);
 
@@ -37,12 +36,13 @@ export default function Map() {
     dispatch(actions.deleteLocation(location));
   };
   const onHeadingUpdate = (heading) => {
-    dispatch(actions.updateMapHeading(heading));
+    dispatch(actions.updateMapHeading({ id, heading }));
   };
   const onDescriptionUpdate = (description) => {
-    dispatch(actions.updateMapDescription(description));
+    dispatch(actions.updateMapDescription({ id, description }));
   };
   const onMapClick = ({ longitude, latitude }) => {
+    if (!currentMap.owned) return;
     setState({
       longitude,
       latitude,
@@ -52,12 +52,12 @@ export default function Map() {
   const onAddNewLocation = ({ title, description, type }) => {
     dispatch(
       actions.addLocation({
-        id: uuidv4(),
         title,
         description,
         type,
         longitude: state.longitude,
         latitude: state.latitude,
+        mapId: currentMap.id,
       })
     );
     resetState();
@@ -87,6 +87,7 @@ export default function Map() {
             description={currentMap.description}
             onHeaderUpdate={onHeadingUpdate}
             onDescriptionUpdate={onDescriptionUpdate}
+            editable={currentMap.owned}
           />
         </Grid>
         <Grid item xs={8}>
@@ -107,6 +108,7 @@ export default function Map() {
               backgroundColor={currentTheme.color}
               onSelect={onSelectLocation}
               onDelete={onDeleteLocation}
+              deletable={currentMap.owned}
             />
           </Box>
         </Grid>

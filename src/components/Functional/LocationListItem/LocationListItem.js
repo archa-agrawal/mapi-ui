@@ -13,18 +13,18 @@ export default function LocationListItem({
   selected,
   onSelect,
   onDelete,
+  deletable,
 }) {
   const { Icon } = getLocationType(type);
 
+  const deleteButton = deletable ? (
+    <IconButton edge="end" aria-label="delete" onClick={() => onDelete(id)}>
+      <DeleteIcon />
+    </IconButton>
+  ) : null;
+
   return (
-    <ListItem
-      secondaryAction={
-        <IconButton edge="end" aria-label="delete" onClick={() => onDelete(id)}>
-          <DeleteIcon />
-        </IconButton>
-      }
-      disablePadding
-    >
+    <ListItem secondaryAction={deleteButton} disablePadding>
       <ListItemButton selected={selected === id} onClick={() => onSelect(id)}>
         <ListItemAvatar>
           <Avatar>

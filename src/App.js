@@ -5,7 +5,6 @@ import Map from "~components/Routes/Map/Map";
 import SiteHeader from "~components/Functional/SiteHeader/SiteHeader";
 import Box from "@mui/material/Box";
 import { useDispatch, useSelector } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
 import * as actions from "~actions";
 
 export default function App() {
@@ -27,18 +26,7 @@ export default function App() {
     return dispatch(actions.logoutUser());
   };
   const createNewMap = (map) => {
-    const mapId = uuidv4();
-    dispatch(
-      actions.createMap({
-        ...map,
-        creator: {
-          name: "Vibhor",
-        },
-        createdOn: new Date().toDateString(),
-        id: mapId,
-      })
-    );
-    navigate("/map/new");
+    dispatch(actions.createMap(map));
   };
   return (
     <div>
@@ -52,8 +40,8 @@ export default function App() {
       />
       <Box sx={{ mx: 10, mt: 8 }}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path={"/map/:id"} element={<Map />} />
+          <Route path="/" element={<Home userId={user.id} />} />
+          <Route path={"/map/:id"} element={<Map userId={user.id} />} />
         </Routes>
       </Box>
     </div>
