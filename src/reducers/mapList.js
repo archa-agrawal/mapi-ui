@@ -14,7 +14,6 @@ export const mapList = createReducer(initialState, (builder) => {
       state.maps = state.maps.filter((map) => map.id !== payload);
     })
     .addCase(actions.getMaps.fulfilled, (state, { payload }) => {
-      console.log(payload);
       state.maps = payload;
     });
 });

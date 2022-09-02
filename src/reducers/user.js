@@ -17,7 +17,6 @@ export const user = createReducer(initialState, (builder) => {
       state.user = payload;
     })
     .addCase(actions.logoutUser.fulfilled, (state) => {
-      console.log("logging out");
       state.user = {
         id: undefined,
       };

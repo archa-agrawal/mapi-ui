@@ -25,7 +25,6 @@ export const getUser = createAsyncThunk("user/get", async () => {
 });
 
 export const logoutUser = createAsyncThunk("user/logout", async () => {
-  console.log("logging out action");
   await fetch(`${API_URL}/logout`, {
     method: "POST",
     credentials: "include",

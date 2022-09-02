@@ -17,7 +17,6 @@ export default function interactiveMap({ id, markers, onMapClick }) {
       <MarkerPin type={type} />
     </Marker>
   ));
-  console.log(id);
   return (
     <Map
       id={id}
