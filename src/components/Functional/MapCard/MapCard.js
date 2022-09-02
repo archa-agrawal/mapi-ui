@@ -27,11 +27,11 @@ export default function MapCard({ map, onCardClick, onShareClick, onDelete }) {
               sx={{ backgroundColor: currentTheme.secondaryColor }}
               aria-label="user"
             >
-              {map.creator.name.substring(0, 1)}
+              {map.creator.firstName.substring(0, 1)}
             </Avatar>
           }
           title={map.heading}
-          subheader={map.createdOn}
+          subheader={new Date(map.createdAt).toDateString()}
         />
         <CardMedia
           component="img"
