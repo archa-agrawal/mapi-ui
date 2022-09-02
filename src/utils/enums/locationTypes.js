@@ -8,6 +8,7 @@ import LocalMallRoundedIcon from "@mui/icons-material/LocalMallRounded";
 import AttractionsRoundedIcon from "@mui/icons-material/AttractionsRounded";
 import TheaterComedyRoundedIcon from "@mui/icons-material/TheaterComedyRounded";
 import StadiumRoundedIcon from "@mui/icons-material/StadiumRounded";
+import NightlifeRoundedIcon from "@mui/icons-material/NightlifeRounded";
 
 const locationTypes = {
   CAFE: {
@@ -54,6 +55,11 @@ const locationTypes = {
     name: "stadium",
     text: "Stadium",
     Icon: StadiumRoundedIcon,
+  },
+  BAR: {
+    name: "pub",
+    text: "Pub",
+    Icon: NightlifeRoundedIcon,
   },
   DEFAULT: {
     name: "default",
