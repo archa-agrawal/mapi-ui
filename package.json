@@ -49,8 +49,7 @@
           "**/*.stories.*"
         ],
         "rules": {
-          "import/no-anonymous-default-export": "off",
-          "sort-imports": "error"
+          "import/no-anonymous-default-export": "off"
         }
       }
     ]
