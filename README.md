@@ -13,7 +13,7 @@
 
 ### Server
 
-clone (https://github.com/archa-agrawal/mapi-server)and install dependencies
+clone (https://github.com/archa-agrawal/mapi-server) and install dependencies
 
 ```
 npm install
