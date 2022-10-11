@@ -8,6 +8,7 @@ const initialState = {
 export const mapList = createReducer(initialState, (builder) => {
   builder
     .addCase(actions.createMap.fulfilled, (state, { payload: map }) => {
+      console.log("hello");
       state.maps = [map, ...state.maps];
     })
     .addCase(actions.deleteMap.fulfilled, (state, { payload: mapId }) => {
