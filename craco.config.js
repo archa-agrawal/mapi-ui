@@ -14,11 +14,6 @@ fs.readdirSync(sourcePath, { withFileTypes: true })
   );
 
 module.exports = {
-  babel: {
-    loaderOptions: {
-      ignore: ['./node_modules/mapbox-gl/dist/mapbox-gl.js']
-    }
-  },
   webpack: {
     alias: resolvedAliases,
   },
